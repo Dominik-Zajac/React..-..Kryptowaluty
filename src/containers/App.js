@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Coin from '../components/CoinList/Coin/coin';
+import Coin from './components/CoinList/Coin/coin';
 
 class App extends Component {
     constructor(props) {
