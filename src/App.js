@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Coin from '../components/CoinList/Coin/coin';
+import Header from '../components/Header/Header';
+import Coin from '../components/CoinList/Coin/Coin';
 
 class App extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class App extends Component {
     render() {
         return (
             <div>
+                <Header />
                 <Coin />
             </div>
         );
