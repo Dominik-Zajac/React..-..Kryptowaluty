@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import './App.css';
 
 import Header from '../components/Header/Header';
-import Coin from '../components/CoinList/Coin/Coin';
+import CoinList from '../components/CoinList/CoinList';
 
 class App extends Component {
     state = {
@@ -16,34 +16,11 @@ class App extends Component {
     };
 
     render() {
-        const { cryptos } = this.state;
+        const { marketCap, cryptos } = this.state;
         return (
             <div>
-                <Header cap={this.state.marketCap} />
-                <Coin
-                    name={cryptos[0].name}
-                    acronym={cryptos[0].acronym}
-                    value={cryptos[0].value}
-                    cap={cryptos[0].cap}
-                />
-                <Coin
-                    name={cryptos[1].name}
-                    acronym={cryptos[1].acronym}
-                    value={cryptos[1].value}
-                    cap={cryptos[1].cap}
-                />
-                <Coin
-                    name={cryptos[2].name}
-                    acronym={cryptos[2].acronym}
-                    value={cryptos[2].value}
-                    cap={cryptos[2].cap}
-                />
-                <Coin
-                    name={cryptos[3].name}
-                    acronym={cryptos[3].acronym}
-                    value={cryptos[3].value}
-                    cap={cryptos[3].cap}
-                />
+                <Header cap={marketCap} />
+                <CoinList cryptos={cryptos} />
             </div>
         );
     };

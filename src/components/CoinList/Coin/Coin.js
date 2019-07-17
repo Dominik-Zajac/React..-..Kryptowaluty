@@ -22,6 +22,7 @@ const Coin = ({ name, acronym, value, cap }) => (
 
 Coin.propTypes = {
     name: PropTypes.string.isRequired,
+    acronym: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     cap: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
