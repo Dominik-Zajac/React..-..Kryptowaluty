@@ -6,6 +6,6 @@ const SearchBar = ({ searchQuery, handleChange }) => {
             <input value={searchQuery} onChange={handleChange} />
         </div>
     );
-}
+};
 
 export default SearchBar;
