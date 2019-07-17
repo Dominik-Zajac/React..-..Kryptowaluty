@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 
-import Coin from './components/CoinList/Coin/coin';
+import Coin from '../components/CoinList/Coin/Coin';
 
 class App extends Component {
     constructor(props) {
@@ -11,7 +11,10 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Coin />
+                <Coin name='Bitcoin' acronym='BTC' value={111111} cap={188888888888} />
+                <Coin name="Etherum" acronym="ETH" value={800} cap={82222222222} />
+                <Coin name="NEO" acronym="NEO" value={100} cap={7000000000} />
+                <Coin name="EOS" acronym="EOS" value={10} cap={5555555555} />
             </div>
         );
     }
