@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import './App.css';
 
+import Header from '../components/Header/Header';
 import Coin from '../components/CoinList/Coin/Coin';
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
     render() {
         return (
             <div>
+                <Header cap={452222221115} />
                 <Coin name='Bitcoin' acronym='BTC' value={111111} cap={188888888888} />
                 <Coin name="Etherum" acronym="ETH" value={800} cap={82222222222} />
                 <Coin name="NEO" acronym="NEO" value={100} cap={7000000000} />
