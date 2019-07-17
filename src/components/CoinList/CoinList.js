@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 import Coin from './Coin/Coin';
 
 const CoinList = ({ cryptos }) => {
-    return cryptos.map(crypto => <Coin key={crypto.acronym} {...crypto} />)
+    const isListEmpty = cryptos.length === 0;
+
+    const coinList = isListEmpty ? (
+        <p>Brak wynikow dla wpisanej frazy.</p>
+    ) : (
+            cryptos.map(crypto => <Coin key={crypto.acronym} {...crypto} />)
+        )
+
+    return coinList;
 };
 
 CoinList.propTypes = {
