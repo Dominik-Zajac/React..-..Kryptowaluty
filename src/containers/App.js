@@ -42,13 +42,9 @@ class App extends Component {
                 supply: 5555555555
             }
         ],
-        matchedCryptos: [],
+        matchedCryptos: null,
         marketCap: 452222221115,
         searchQuery: '',
-    };
-
-    componentWillMount() {
-        this.setMatchedCryptos();
     };
 
     searchChangeHandler = event => {
@@ -81,7 +77,8 @@ class App extends Component {
             <div>
                 <Header cap={marketCap} />
                 <SearchBar handleChange={this.searchChangeHandler} searchQuery={searchQuery} />
-                <CoinList cryptos={matchedCryptos} />
+                <CoinList cryptos={this.state.matchedCryptos !== null ?
+                    this.state.matchedCryptos : this.state.cryptos} />
             </div>
         );
     };
