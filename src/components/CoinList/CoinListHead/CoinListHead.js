@@ -7,13 +7,16 @@ import CoinListRow from '../CoinListRow/CoinListRow';
 const CoinListHead = () => (
     <CoinListRow>
         <CoinListCell isLarge isHeader>
+            #
+        </CoinListCell>
+        <CoinListCell isLarge isHeader>
             Name
         </CoinListCell>
         <CoinListCell isHeader>
             Price
         </CoinListCell>
         <CoinListCell isHeader>
-            Change (24h)
+            Change (1h)
         </CoinListCell>
         <CoinListCell isHeader>
             Market cap

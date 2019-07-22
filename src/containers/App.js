@@ -1,47 +1,21 @@
 import React, { Component } from 'react';
 import debounce from 'lodash.debounce';
+import axios from 'axios';
 
 /* Components */
 import Header from '../components/Header/Header';
 import SearchBar from '../components/SearchBar/SearchBar';
 import CoinList from '../components/CoinList/CoinList';
+import { mapFetchedCryptos } from '../shared/utils/helpers';
+
+// API
+const coinMarketCapAxiosInstance = axios.create({
+    baseURL: 'https://api.coinmarketcap.com/v2/',
+});
 
 class App extends Component {
     state = {
-        cryptos: [
-            {
-                name: 'Bitcoin',
-                acronym: 'BTC',
-                value: 111111,
-                change: 2.3,
-                cap: 188888888888,
-                supply: 188888888888,
-            },
-            {
-                name: 'Etherum',
-                acronym: 'ETH',
-                value: 800,
-                change: 2.1,
-                cap: 82222222222,
-                supply: 82222222222
-            },
-            {
-                name: 'NEO',
-                acronym: 'NEO',
-                value: 100,
-                change: 1.3,
-                cap: 7000000000,
-                supply: 7000000000
-            },
-            {
-                name: 'EOS',
-                acronym: 'EOS',
-                value: 10,
-                change: -1.2,
-                cap: 5555555555,
-                supply: 5555555555
-            }
-        ],
+        cryptos: [],
         matchedCryptos: null,
         marketCap: 452222221115,
         searchQuery: '',
@@ -71,14 +45,26 @@ class App extends Component {
         });
     }, 250);
 
+    componentDidMount() {
+        coinMarketCapAxiosInstance
+            .get('ticker/?limit=100')
+            .then(({ data: { data: fetchedCryptos } }) => {
+                this.setState({
+                    cryptos: mapFetchedCryptos(fetchedCryptos)
+                });
+            });
+    }
+
     render() {
-        const { marketCap, matchedCryptos, searchQuery } = this.state;
+        const { marketCap, searchQuery } = this.state;
         return (
             <div>
                 <Header cap={marketCap} />
                 <SearchBar handleChange={this.searchChangeHandler} searchQuery={searchQuery} />
-                <CoinList cryptos={this.state.matchedCryptos !== null ?
-                    this.state.matchedCryptos : this.state.cryptos} />
+                <CoinList cryptos={this.state.matchedCryptos !== null
+                    ? this.state.matchedCryptos
+                    : this.state.cryptos}
+                />
             </div>
         );
     };

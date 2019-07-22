@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { formatAsCurrency } from '../../shared/utils/helpers';
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,12 +17,8 @@ const Title = styled.h1`
 
 const Header = ({ cap }) => (
 	<Wrapper>
-		<Title>Kryptowaluty</Title>
-		<p>
-			Market Cap : ${String(cap)
-				.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-				.trim()}
-		</p>
+		<Title>Crypto Tracker</Title>
+		<p>Market Cap: {formatAsCurrency(cap)}</p>
 	</Wrapper>
 );
 

@@ -7,9 +7,15 @@ import CoinListCell from '../CoinListCell/CoinListCell';
 import CoinListRow from '../CoinListRow/CoinListRow';
 
 /* RegExp */
-import formatAsCurrency from '../../../shared/utils/helpers';
+import { formatAsCurrency } from '../../../shared/utils/helpers';
 
 /* Styles */
+const Symbol = styled.img`
+  width: 36px;
+  height: 36px;
+  margin: 10px;
+`;
+
 const percentChangePlusColor = '#04BF12';
 const percentChangeMinusColor = '#dd2c00';
 const PercentChange = styled.div`
@@ -18,9 +24,13 @@ const PercentChange = styled.div`
 `;
 /* ----------------------- */
 
-const Coin = ({ name, value, change, cap, supply, acronym }) => (
+const Coin = ({ symbolPath, name, value, change, cap, supply, acronym }) => (
     <CoinListRow>
+        <CoinListCell>
+            <Symbol src={symbolPath} alt={`${name}'s symbol`} />
+        </CoinListCell>
         <CoinListCell isLarge>
+            <Symbol src={symbolPath} alt={`${name}'s symbol`} />
             <div>{name}</div>
         </CoinListCell>
         <CoinListCell>{formatAsCurrency(value)}</CoinListCell>
