@@ -11,8 +11,8 @@ import { formatAsCurrency } from '../../../shared/utils/helpers';
 
 /* Styles */
 const Symbol = styled.img`
-  width: 36px;
-  height: 36px;
+  width: 20px;
+  height: 20px;
   margin: 10px;
 `;
 
@@ -24,10 +24,10 @@ const PercentChange = styled.div`
 `;
 /* ----------------------- */
 
-const Coin = ({ symbolPath, name, value, change, cap, supply, acronym }) => (
+const Coin = ({ index, symbolPath, name, value, change, cap, supply, acronym }) => (
     <CoinListRow>
         <CoinListCell>
-            <Symbol src={symbolPath} alt={`${name}'s symbol`} />
+            {index + 1}
         </CoinListCell>
         <CoinListCell isLarge>
             <Symbol src={symbolPath} alt={`${name}'s symbol`} />

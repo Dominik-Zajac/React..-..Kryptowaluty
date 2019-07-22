@@ -17,15 +17,16 @@ export function formatAsCurrency(value) {
 };
 
 export function mapFetchedCryptos(fetchedCryptos) {
-  return Object.keys(fetchedCryptos).map(cryptoId => {
+  console.log(fetchedCryptos)
+  return Object.keys(fetchedCryptos).map((cryptoId, index) => {
     const crypto = fetchedCryptos[cryptoId];
-
     const { name, symbol: acronym, id, circulating_supply: supply } = crypto;
+
     const symbolPath = getIconPath(id);
     const quotesInUsd = crypto.quotes.USD;
     const { price: value, market_cap: cap, percent_change_1h: change } = quotesInUsd;
 
-    return { name, acronym, supply, symbolPath, value, change, cap };
+    return { name, acronym, supply, symbolPath, value, change, cap, index };
   });
 };
 
