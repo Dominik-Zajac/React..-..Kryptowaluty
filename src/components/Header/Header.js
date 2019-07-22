@@ -1,15 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 36px;
+`;
+
+const Title = styled.h1`
+  font-weight: bold;
+`;
 
 const Header = ({ cap }) => (
-    <div>
-        <h1>Kryptowaluty</h1>
+    <Wrapper>
+        <Title>Kryptowaluty</Title>
         <p>
             Market Cap : ${String(cap)
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
                 .trim()}
         </p>
-    </div>
+    </Wrapper>
 );
 
 Header.propTypes = {

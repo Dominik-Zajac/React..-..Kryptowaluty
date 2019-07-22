@@ -1,18 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Coin from './Coin/Coin';
+import CoinListHead from './CoinListHead/CoinListHead';
+
+const NoResults = styled.p`
+  margin-top: 3%;
+  text-align: center;
+  font-size: 1.2em;
+`;
 
 const CoinList = ({ cryptos }) => {
     const isListEmpty = cryptos.length === 0;
-
+    const renderCoin = crypto => <Coin {...crypto} key={crypto.acronym} />;
     const coinList = isListEmpty ? (
-        <p>Brak wynikow dla wpisanej frazy.</p>
+        <NoResults>Brak wyników dla wprowadzonej frazy.</NoResults>
     ) : (
-            cryptos.map(crypto => <Coin key={crypto.acronym} {...crypto} />)
-        )
+            cryptos.map(renderCoin)
+        );
 
-    return coinList;
+    return (
+        <div>
+            <CoinListHead />
+            {coinList}
+        </div>
+    );
 };
 
 CoinList.propTypes = {
