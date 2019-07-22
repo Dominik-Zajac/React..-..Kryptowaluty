@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import styleVars from '../../../shared/styles/variables';
 
+/* Styles */
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -15,6 +16,7 @@ const Wrapper = styled.div`
     font-size: 0.8em;
   }
 `;
+/* ----------------------- */
 
 const CoinListRow = ({ children }) => {
     return <Wrapper>{children}</Wrapper>;

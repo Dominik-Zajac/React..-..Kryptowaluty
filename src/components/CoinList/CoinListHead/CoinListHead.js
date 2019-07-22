@@ -1,5 +1,6 @@
 import React from 'react';
 
+/* Components */
 import CoinListCell from '../CoinListCell/CoinListCell';
 import CoinListRow from '../CoinListRow/CoinListRow';
 
@@ -7,19 +8,19 @@ const CoinListHead = () => (
     <CoinListRow>
         <CoinListCell isLarge isHeader>
             Name
-    </CoinListCell>
+        </CoinListCell>
         <CoinListCell isHeader>
             Price
-    </CoinListCell>
+        </CoinListCell>
         <CoinListCell isHeader>
             Change (24h)
-    </CoinListCell>
+        </CoinListCell>
         <CoinListCell isHeader>
             Market cap
-    </CoinListCell>
+        </CoinListCell>
         <CoinListCell isHeader>
             Circulating supply
-    </CoinListCell>
+        </CoinListCell>
     </CoinListRow>
 );
 

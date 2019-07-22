@@ -1,37 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const Coin = ({ name, acronym, value, cap }) => (
-    <div>
-        <p>{name}</p>
-        <ul>
-            <li className='currency-acronym'>Acronym: {acronym}</li>
-            <li className='currency-value'>
-                Current value: ${String(value)
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-                    .trim()}
-            </li>
-            <li className='currency-cap'>
-                Market cap: ${String(cap)
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-                    .trim()}
-            </li>
-        </ul>
-    </div>
+/* Components */
+import CoinListCell from '../CoinListCell/CoinListCell';
+import CoinListRow from '../CoinListRow/CoinListRow';
+
+/* RegExp */
+import formatAsCurrency from '../../../shared/utils/helpers';
+
+/* Styles */
+const percentChangePlusColor = '#04BF12';
+const percentChangeMinusColor = '#dd2c00';
+const PercentChange = styled.div`
+  color: ${props =>
+        props.change > 0 ? percentChangePlusColor : percentChangeMinusColor};
+`;
+/* ----------------------- */
+
+const Coin = ({ name, value, change, cap, supply, acronym }) => (
+    <CoinListRow>
+        <CoinListCell isLarge>
+            <div>{name}</div>
+        </CoinListCell>
+        <CoinListCell>{formatAsCurrency(value)}</CoinListCell>
+        <CoinListCell>
+            <PercentChange change={change}>{change} %</PercentChange>
+        </CoinListCell>
+        <CoinListCell>{formatAsCurrency(cap)}</CoinListCell>
+        <CoinListCell>
+            {formatAsCurrency(supply)}
+            {` ${acronym}`}
+        </CoinListCell>
+    </CoinListRow>
 );
 
 Coin.propTypes = {
     name: PropTypes.string.isRequired,
-    acronym: PropTypes.string,
-    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    cap: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    change: PropTypes.number.isRequired,
+    cap: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    supply: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+    acronym: PropTypes.string.isRequired,
 };
-
-Coin.defaultProps = {
-    acronym: '-',
-    value: '0',
-    cap: '0'
-};
-
 
 export default Coin;

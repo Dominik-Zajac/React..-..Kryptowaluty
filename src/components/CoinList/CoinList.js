@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+/* Components */
 import Coin from './Coin/Coin';
 import CoinListHead from './CoinListHead/CoinListHead';
 
+/* Styles */
 const NoResults = styled.p`
   margin-top: 3%;
   text-align: center;
   font-size: 1.2em;
 `;
+/* ----------------------- */
 
 const CoinList = ({ cryptos }) => {
     const isListEmpty = cryptos.length === 0;

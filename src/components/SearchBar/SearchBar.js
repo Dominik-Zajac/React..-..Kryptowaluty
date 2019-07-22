@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import styleVars from '../../shared/styles/variables';
 
+/* Styles */
 const Wrapper = styled.div`
   display: flex;
   margin-right: ${styleVars.baseMargin};
@@ -25,13 +27,28 @@ const Input = styled.input`
     border: 1px solid rgba(81, 203, 238, 1);
   }
 `;
+/* ----------------------- */
 
-const SearchBar = ({ searchQuery, handleChange }) => {
-  return (
-    <Wrapper>
-      <Input value={searchQuery} onChange={handleChange} />
-    </Wrapper>
-  );
+const SearchBar = ({ handleChange, searchQuery }) => {
+    return (
+        <Wrapper>
+            <Input
+                type="text"
+                value={searchQuery}
+                placeholder="Search"
+                onChange={handleChange}
+            />
+        </Wrapper>
+    );
+};
+
+SearchBar.propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    searchQuery: PropTypes.string,
+};
+
+SearchBar.defaultProps = {
+    searchQuery: '',
 };
 
 export default SearchBar;

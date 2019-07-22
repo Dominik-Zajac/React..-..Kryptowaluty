@@ -14,18 +14,18 @@ const Title = styled.h1`
 `;
 
 const Header = ({ cap }) => (
-    <Wrapper>
-        <Title>Kryptowaluty</Title>
-        <p>
-            Market Cap : ${String(cap)
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-                .trim()}
-        </p>
-    </Wrapper>
+	<Wrapper>
+		<Title>Kryptowaluty</Title>
+		<p>
+			Market Cap : ${String(cap)
+				.replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+				.trim()}
+		</p>
+	</Wrapper>
 );
 
 Header.propTypes = {
-    cap: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+	cap: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 };
 
 export default Header;
